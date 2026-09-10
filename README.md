@@ -1,16 +1,35 @@
 # Maltin Contracts
 
-Published Agent Contracts, in the form a Maltin reader consumes.
+A **Git Registry**: a Git repository holding one or more **Contract Packages**.
 
-Each directory is one **Contract repository**: the authored contract, the lock that pins the exact
+Each directory is one Contract Package — the authored contract, the lock that pins the exact
 normative environment it was compiled against, and a human-readable card.
 
 ```
-<contract>/
+hub.index.json           what this registry contains. Discovery only, never authority
+<contract>/              one Contract Package
   maltin.contract.json   the authored document — normative
   maltin.lock.json       kernel ruleset, profiles and resolved environment, by hash
   CONTRACT.md            a deterministic projection for people — never authority
+  maltin.lineage.json    optional — where this Contract was adapted from. Non-normative
 ```
+
+A Git Registry holding exactly one Contract Package at its root is equally valid. Nothing requires
+one Git repository per Contract, and nothing requires a Contract to live here.
+
+## The index
+
+`hub.index.json` lets a reader find out what this registry contains in **one request** instead of
+two per package. It carries a directory, a name, the author's own description, a use-case family, a
+schema version and the profile ids — and nothing else.
+
+It is **not evidence**. An entry says somebody claimed a Contract is in that directory. Whether the
+Contract is there, whether it is valid, and whether its environment still resolves are three further
+questions, answered only by fetching `maltin.contract.json` and `maltin.lock.json` and validating
+them. If the index and a Contract disagree, the Contract is right.
+
+It is generated from packages that validated, never hand-maintained, and byte-identical for
+byte-identical registry state.
 
 ## What these are
 
