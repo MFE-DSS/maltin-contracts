@@ -31,29 +31,56 @@ would be the bug.
 
 A Contract you find here **proposes; it never accepts.**
 
-Adapting one in Maltin Studio starts a Blueprint that is **built from an allow-list**, not copied and
-trimmed. It begins with descriptive scaffolding only: the contract id and version, the schema
-version, the lifecycle marker, and the free-text `scope` and `non_goals`. None of those derives a
-fact, activates a rule, raises a requirement, opens a gate, selects a profile or declares an
-execution boundary. The Blueprint's purpose and its architecture start empty.
+Adapting one in Maltin Studio starts a Blueprint that is **built locally**, not copied and trimmed.
+The rule it holds to is stronger than "nothing dangerous is inherited":
 
-Everything normative reaches your Blueprint **only when you accept it** — what the Contract is for,
-its architecture, the profiles it pins, its profile data, its execution boundary, its authored
-requirements, acceptance criteria, verification, architecture boundaries, recorded decisions and
-owners. Some of that is reviewed decision by decision; the rest is offered as whole sections, one
-accept at a time. A section-sized accept is coarse, and it is still a decision you made.
+> **No authored specification content from a source Contract becomes part of an adapted Blueprint
+> without an explicit review action.**
+
+Not *nothing that activates a rule*. Nothing you wrote down. That distinction is the whole of it:
+
+```
+scope:     only EU customers
+non_goals: do not support multi-region
+```
+
+Neither of those makes a compiler do anything. Both are commitments their author made, and neither
+becomes the adapting user's commitment by default. The same goes for the purpose, the architecture,
+the profiles, the profile data, the execution boundary, the requirements, the acceptance criteria,
+the verification, the boundaries, the recorded decisions and the owners. Some of it is reviewed
+decision by decision; the rest is offered as whole sections, one accept at a time. A section-sized
+accept is coarse, and it is still a decision somebody made.
+
+The Blueprint starts with the scaffolding a document needs to be a document — an identity, a version,
+the schema version, a lifecycle — and **every one of those values is its own**, not this Contract's.
 
 So the guarantee is exact rather than rhetorical:
 
-> A Blueprint in which you accept nothing compiles **byte-identically** to one built from that same
-> descriptive scaffolding with no Contract in front of you. The compiled content hash is the same
-> string — not "roughly the same Blueprint".
+> A Blueprint in which you accept nothing compiles **byte-identically** to one started by somebody
+> who never opened this registry. The compiled content hash is the same string — not "roughly the
+> same Blueprint".
 
-And the converse holds, which is what makes withholding safe rather than lossy: accepting every
-section and every decision reproduces this Contract's compiled identity exactly.
+## Adapting makes a new Contract, not a copy of this one
+
+The converse holds too, and it is the more interesting half. Accept every proposal and the result
+reproduces this Contract's **meaning** exactly — every authored section, and every conclusion the
+compiler draws from them: activated requirements, applicability, open questions, gates, completeness
+and the resolved normative environment.
+
+Its **identity is still its own**:
+
+```
+semantics(yours) == semantics(this one)     when you accept everything
+identity(yours)  != identity(this one)      always
+```
+
+Different `contract_id`, different `contract_version`, different authored hash, different compiled
+hash. A Contract adapted from another is a new Contract — that is what makes this a flywheel rather
+than a photocopier. The relationship between the two is real, and it is recorded outside the
+Contract's own state rather than inside it, so neither hash moves.
 
 If a Contract ever carried normative content Maltin had no way to offer you a decision about, the
-adaptation would name it and refuse to compile rather than inherit it quietly or drop it quietly.
+adaptation would name it and refuse to compile — rather than inherit it quietly or drop it quietly.
 None of the seven here does.
 
 ## Reproducing them
